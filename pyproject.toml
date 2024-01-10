@@ -11,6 +11,7 @@ langchain = "^0.0.354"
 python-dotenv = "^1.0.0"
 openai = "<=1.0.0"
 chromadb = "^0.4.22"
+tiktoken = "^0.5.2"
 
 
 [build-system]

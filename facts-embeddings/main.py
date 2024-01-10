@@ -24,10 +24,14 @@ docs = loader.load_and_split(text_splitter=text_splitter)
 # Create a vector store
 vector_store = Chroma.from_documents(
     documents=docs,
-    embeddings=embeddings,
+    embedding=embeddings,
     persist_directory="facts-embeddings/vector_store"
 )
 
-for doc in docs:
-    print(doc.page_content)
+results = vector_store.similarity_search_with_score(
+    "What is an interesting fact about the English language?", k=2)
+
+for result in results:
     print("\n")
+    print(result[0])
+    print(result[0].page_content)
