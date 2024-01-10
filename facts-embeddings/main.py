@@ -28,10 +28,9 @@ vector_store = Chroma.from_documents(
     persist_directory="facts-embeddings/vector_store"
 )
 
-results = vector_store.similarity_search_with_score(
-    "What is an interesting fact about the English language?", k=2)
+results = vector_store.similarity_search(
+    "What is an interesting fact about the English language?", k=1)
 
 for result in results:
     print("\n")
-    print(result[0])
-    print(result[0].page_content)
+    print(result.page_content)
