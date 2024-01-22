@@ -1,9 +1,12 @@
+from dotenv import load_dotenv
 from langchain.document_loaders import TextLoader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores.chroma import Chroma
+import langchain
 
-from dotenv import load_dotenv
+langchain.debug = True
+
 load_dotenv()
 
 # Create an embeddings model

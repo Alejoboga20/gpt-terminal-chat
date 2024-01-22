@@ -3,6 +3,8 @@ from langchain.vectorstores.chroma import Chroma
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.chains import RetrievalQA
 
+from reduntant_filter_retriever import RedundantFilterRetriever
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -19,7 +21,10 @@ vector_store = Chroma(
     embedding_function=embeddings
 )
 
-retriever = vector_store.as_retriever()
+retriever = RedundantFilterRetriever(
+    embeddings=embeddings,
+    chroma=vector_store
+)
 
 chain = RetrievalQA.from_chain_type(
     llm=chat, retriever=retriever, chain_type="stuff")
