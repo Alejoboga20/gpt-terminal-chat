@@ -17,8 +17,14 @@ poetry install
 poetry shell
 ```
 
-3. Execute the application
+3. Execute the application to create the embeddings.
 
 ```bash
 python [app_folder_name]/main.py
+```
+
+4. Next time you can run the prompt file
+
+```bash
+python [app_folder_name]/prompt.py
 ```
